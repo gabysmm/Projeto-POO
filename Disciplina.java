@@ -13,7 +13,7 @@ public class Disciplina {
     public void setNome_d(String nome_d) {
         this.nome_d = nome_d;
     }
-    
+
     public String getCodigo() {
         return codigo;
     }

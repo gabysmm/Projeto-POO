@@ -1,4 +1,4 @@
-public class Professor {
+public class Professores {
     private String nome_p;
     private String identificacao;
 
