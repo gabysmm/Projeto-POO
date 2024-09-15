@@ -5,9 +5,9 @@ public class Turmas {
     private Professores professores;
     private List<Alunos> alunos;
 
-    public Turmas(Disciplina disciplina, Professores professores) throws DadosInvalidosException{
-        if (nome == null || nome.isEmpty() || disciplina == null) {
-            throw new DadosInvalidosException("o nome da disciplina é obrigatório");
+    public Turmas(String nome, Disciplina disciplina, Professor professor) throws DadosInvalidosException {
+        if (nome == null || nome.isEmpty() || disciplina == null || professor == null) {
+            throw new DadosInvalidosException("todos os campos devem ser preenchidos");
         }
         this.professores = professores;
         this.disciplina = disciplina;
