@@ -5,7 +5,10 @@ public class Turmas {
     private Professores professores;
     private List<Alunos> alunos;
 
-    public Turmas(Disciplina disciplina, Professores professores){
+    public Turmas(Disciplina disciplina, Professores professores) throws DadosInvalidosException{
+        if (nome == null || nome.isEmpty() || disciplina == null) {
+            throw new DadosInvalidosException("o nome da disciplina é obrigatório");
+        }
         this.professores = professores;
         this.disciplina = disciplina;
         this.alunos = new ArrayList<>();
