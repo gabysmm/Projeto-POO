@@ -26,8 +26,8 @@ public class Main {
 
         System.out.println("Turma: " + turma2.getNome());
         System.out.println("Turma: " + turma4.getNome());
-        System.out.println("Disciplina: " + Disciplina.getDisciplina());
-        System.out.println("Professor: " + nome_p.getProfessor());
+        System.out.println("Disciplina: " + turma2.getDisciplina());
+        System.out.println("Professor: " + turma4.getProfessor());
         System.out.println("Alunos: " + turma2.getAlunos());
         System.out.println("Alunos: " + turma4.getAlunos());
 
