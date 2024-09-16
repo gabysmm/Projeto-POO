@@ -15,10 +15,24 @@ public class Turmas {
     }
 
     public void addAluno(Aluno aluno) {
+        if (aluno == null) {
+            throw new TaInvalidoException("o aluno não pode ser nulo");
+        }
+        if (alunos.contains(aluno)) {
+            throw new TaInvalidoException("o aluno já está matriculado nesta turma");
+        }
         alunos.add(aluno);
+        
     }
 
-    public void removerAluno(Aluno aluno) {
+    public void removerAluno(Aluno aluno) throws TaInvalidoException {
+        if (aluno == null) {
+            throw new TaInvalidoException("O aluno não pode ser nulo.");
+        }
+        if (!alunos.contains(aluno)) {
+            throw new TaInvalidoException("O aluno não está matriculado nesta turma.");
+        }
+        alunos.remove(aluno);
         alunos.remove(aluno);
     }
 }
