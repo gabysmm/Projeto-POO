@@ -1,17 +1,17 @@
 public class Professores {
-    private String nome_p;
+    private String nome;
     private String identificacao;
 
-    public Professor(String nome_p, String identificacao) {
-        this.nome_p = nome_p;
+    public Professor(String nome, String identificacao) {
+        this.nome = nome;
         this.identificacao = identificacao;
     }
 
-    public String getNome_p(){
-        return this.nome_p;
+    public String getNome(){
+        return this.nome;
     }
-    public void nome_p(String nome_p){
-        this.nome_p = nome_p;
+    public void setNome(String nome){
+        this.nome = nome;
     }
 
     public String identificacao(){

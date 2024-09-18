@@ -1,17 +1,17 @@
 public class Disciplina {
-    private String nome_d;
+    private String nome;
     private String codigo;
 
-    public Disciplina(String nome_d, String codigo) {
-        this.nome_d = nome_d;
+    public Disciplina(String nome, String codigo) {
+        this.nome = nome;
         this.codigo = codigo;
     }
 
-    public String getNome_d() {
-        return nome_d;
+    public String getNome() {
+        return nome;
     }
-    public void setNome_d(String nome_d) {
-        this.nome_d = nome_d;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCodigo() {
