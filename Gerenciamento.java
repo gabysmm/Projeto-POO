@@ -4,19 +4,19 @@ public class Main {
         Alunos aluno02 = new Aluno ("Luna");
         Alunos aluno03 = new Aluno ("Renan");
 
-        Professores professorL = new professor ("Lucena");
-        Professores professorJ = new professor ("Jorgiano");
-        Professores professorC = new professor ("coleguinha")
+        Professores professorL = new Professor ("Lucena");
+        Professores professorJ = new Professor ("Jorgiano");
+        Professores professorC = new Professor ("coleguinha")
 
         Disciplina poo = new Disciplina ("programação orientada a objetos");
         Disciplina algoritmos = new Disciplina ("algoritmos");
         Disciplina edl = new Disciplina ("estrutura de dados lineares");
 
-        Turmas turma2 = new turma ("2 periodo");
-        Turmas turma4 = new turma ("4 periodo");
+        Turmas turma2 = new turma ("2 periodo", poo, professorL);
+        Turmas turma4 = new turma ("4 periodo", edl, professorC);
 
-        turma2.adcionarAluno(aluno01);
-        turma4.adcionarAluno(aluno03);
+        turma2.addAluno(aluno01);
+        turma4.addAluno(aluno03);
 
         professorL.atribuirTurma(turma2);
         professorC.atribuirTurma(turma4);
