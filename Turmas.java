@@ -3,7 +3,7 @@ import java.util.*;
 public class Turmas {
     private Disciplina disciplina;
     private Professor professor;
-    private List<Alunos> alunos;
+    private List<Aluno> alunos;
 
     public Turmas(String nome, Disciplina disciplina, Professor professor) throws DadosInvalidosException {
         if (nome == null || nome.isEmpty() || disciplina == null || professor == null) {
@@ -33,5 +33,15 @@ public class Turmas {
             throw new TaInvalidoException("O aluno não está matriculado nesta turma.");
         }
         alunos.remove(aluno);
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+    public List<Aluno> getAlunos(); {
+        return alunos;
+    }
+    public Disciplina getDisciplina() {
+        return disciplina;
     }
 }
