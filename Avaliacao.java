@@ -35,7 +35,7 @@ public class Avaliacao{
         if (media >= 60) {
             return media;
         }
-        else() {
+        else {
             double media_final = (media + provafinal) / 2;
             return media_final;
         }
@@ -44,9 +44,10 @@ public class Avaliacao{
     public String statusAluno() {
         double media = media();
         if(media >= 60) {
-            return("parabéns, você foi aprovado com a média: " + media;)
-        }
-        else(media < 60) {
+            return("parabéns, você foi aprovado com a média: " + media);
+        } else if(media < 60) {
             return("infelizmente você foi reprovado :( sua média foi:" + media);
         }
-    } 
+    }
+}
+    

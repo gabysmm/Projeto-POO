@@ -9,12 +9,7 @@ public class Aluno {
         }
         this.nome = nome;
         this.matricula = matricula;
-<<<<<<< HEAD
         this.avaliacao = null;
-=======
-        
-    }
->>>>>>> ed764b0e8488c045bdfcf1be6aed4d867ce377f4
     }
 
     public String getNome(){
@@ -37,5 +32,9 @@ public class Aluno {
     public void setAvaliacao(Avaliacao avaliacao) {
         this.avaliacao = avaliacao;
     }
-
+    
+    @Override
+    public String toString() {
+        return nome + " (" + matricula + ") - " + periodo;
+    }
 }

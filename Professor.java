@@ -1,22 +1,22 @@
 public class Professor {
-    private String nome_p;
+    private String nome;
     private String identificacao;
     private List <Turmas> turmas;
 
-    public Professor(String nome_p, String identificacao) throws DadosInvalidosException {
-        if (nome_p == null || nome_p.isEmpty()) {
+    public Professor(String nome, String identificacao) throws DadosInvalidosException {
+        if (nome == null || nome.isEmpty()) {
             throw new DadosInvalidosException("O nome do professor é um campo obrigatório.");
         }
-        this.nome_p = nome_p;
+        this.nome = nome;
         this.identificacao = identificacao;
         this.turmas = new ArrayList<>();
     }
 
-    public String getNome_p(){
-        return this.nome_p;
+    public String getNome(){
+        return this.nome;
     }
-    public void setNome_p(String nome_p){
-        this.nome_p = nome_p;
+    public void setNome(String nome){
+        this.nome = nome;
     }
 
     public String getIdentificacao(){
@@ -42,6 +42,6 @@ public class Professor {
 
     @Override
     public String toString() {
-        return ("professor" + nome_p + "identificação" + identificacao);
+        return ("professor" + nome + "identificação" + identificacao);
     }
 }
