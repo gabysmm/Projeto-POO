@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class SistemaEscolar {
     private static List<Alunos> alunos = new ArrayList<>();
     private static List<Disciplina> disciplinas = new ArrayList<>();
@@ -70,10 +71,10 @@ public class SistemaEscolar {
         String periodo = scanner.nextLine();
 
         try {
-            Aluno aluno = new Aluno(nome, matricula, periodo);
+            Alunos aluno = new Alunos(nome, matricula, periodo);
             alunos.add(aluno);
             System.out.println("Aluno cadastrado com sucesso!");
-        } catch (DadosInvalidosException e) {
+        } catch (Excessoes.DadosInvalidosException e) {
             System.out.println("Erro ao cadastrar aluno: " + e.getMessage());
         }
     }
@@ -99,7 +100,7 @@ public class SistemaEscolar {
             Professor professor = new Professor(nome, identificacao);
             professores.add(professor);
             System.out.println("Professor cadastrado com sucesso!");
-        } catch (DadosInvalidosException e) {
+        } catch (Excessoes.DadosInvalidosException e) {
             System.out.println("Erro ao cadastrar professor: " + e.getMessage());
         }
     }
@@ -125,15 +126,20 @@ public class SistemaEscolar {
             return;
         }
 
-        Turmas turma = new Turmas(disciplina, professor, new ArrayList<>(), nome);
-        turmas.add(turma);
-        professor.atribuirTurma(turma);
-        System.out.println("Turma cadastrada com sucesso!");
+        try{
+            Turmas turma = new Turmas(disciplina, professor, new ArrayList<>(), nome);
+            turmas.add(turma);
+            professor.atribuirTurma(turma);
+            System.out.println("Turma cadastrada com sucesso!");
+        }
+        catch (Excessoes.DadosInvalidosException e){
+                System.out.println("erro ao cadastrar turma:" + e.getMessage());
+            }
     }
 
     private static void listarAlunos() {
         System.out.println("\n=== Lista de Alunos ===");
-        for (Aluno aluno : alunos) {
+        for (Alunos aluno : alunos) {
             System.out.println(aluno);
         }
     }
