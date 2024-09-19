@@ -1,13 +1,13 @@
 public class Main {
     public static void main(String[] args) {
         try{
-            Alunos aluno01 = new Aluno ("Gabrielly");
-            Alunos aluno02 = new Aluno ("Luna");
-            Alunos aluno03 = new Aluno ("Renan");
+            Alunos aluno01 = new Aluno ("Gabrielly", "20232014040000");
+            Alunos aluno02 = new Aluno ("Luna", "20232014040018");
+            Alunos aluno03 = new Aluno ("Renan", "20222014040000");
 
-            Professores professorL = new Professor ("Lucena");
-            Professores professorJ = new Professor ("Jorgiano");
-            Professores professoraS = new Professor ("Silvia");
+            Professores professorL = new Professor ("Lucena", "1111");
+            Professores professorJ = new Professor ("Jorgiano", "2222");
+            Professores professoraS = new Professor ("Silvia", "3333");
 
             Disciplina poo = new Disciplina ("programação orientada a objetos");
             Disciplina algoritmos = new Disciplina ("algoritmos");
