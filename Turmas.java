@@ -1,12 +1,12 @@
 import java.util.*;
 
-public class Turmas {
+public class Turmas extends Professor{
     private Disciplina disciplina;
     private Professor professor;
     private List<Aluno> alunos;
 
-    public Turmas(String nome, Disciplina disciplina, Professor professor) throws DadosInvalidosException {
-        if (nome == null || nome.isEmpty() || disciplina == null || professor == null) {
+    public Turmas(String nomeTurma, Disciplina disciplina, Professor professor) throws DadosInvalidosException {
+        if (nome == null || nomeTurma.isEmpty() || disciplina == null || professor == null) {
             throw new DadosInvalidosException("todos os campos devem ser preenchidos");
         }
         this.professor = professor;
@@ -38,7 +38,7 @@ public class Turmas {
     public Professor getProfessor() {
         return professor;
     }
-    public List<Aluno> getAlunos(); {
+    public List<Aluno> getAlunos() {
         return alunos;
     }
     public Disciplina getDisciplina() {
