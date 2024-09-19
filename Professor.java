@@ -1,6 +1,7 @@
 public class Professor {
     private String nome_p;
     private String identificacao;
+    private List <Turmas> turmas;
 
     public Professor(String nome_p, String identificacao) throws DadosInvalidosException {
         if (nome_p == null || nome_p.isEmpty()) {
@@ -8,19 +9,20 @@ public class Professor {
         }
         this.nome_p = nome_p;
         this.identificacao = identificacao;
+        this.turmas = new ArrayList<>();
     }
 
     public String getNome_p(){
         return this.nome_p;
     }
-    public void nome_p(String nome_p){
+    public void setNome_p(String nome_p){
         this.nome_p = nome_p;
     }
 
-    public String identificacao(){
+    public String getIdentificacao(){
         return this.identificacao;
     }
-    public void identificacao(String identificacao){
+    public void setIdentificacao(String identificacao){
         this.identificacao = identificacao;
     }
 
@@ -32,5 +34,9 @@ public class Professor {
 
     public void removerTurma(Turmas turma) {
         this.turmas.remove(turma);
+    }
+
+    public List<Turmas> getTurmas() {
+        return this.turmas;
     }
 }
