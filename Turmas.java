@@ -1,4 +1,3 @@
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class Turmas {
         this.periodo = periodo;
     }
 
-    public static Turmas atribuirTurma(Disciplina disciplina, Professor professor, List<Alunos> alunos, String periodo) throws DadosInvalidosException {
+    public static Turmas atribuirTurma(Disciplina disciplina, Professor professor, List<Alunos> alunos, String periodo) throws Excessoes.DadosInvalidosException {
         return new Turmas(disciplina, professor, alunos, periodo);
     }
 
@@ -38,13 +37,13 @@ public class Turmas {
             throw new Excessoes.TaInvalidoException("O aluno não pode ser nulo.");
         }
         if (!alunos.contains(aluno)) {
-            throw new Excessoes.InvalidoException("O aluno não está matriculado nesta turma.");
+            throw new Excessoes.TaInvalidoException("O aluno não está matriculado nesta turma.");
         }
         alunos.remove(aluno);
     }
 
     public List<Alunos> getAlunos() {
-        return alunos;
+        return new ArrayList<>(alunos);
     }
 
     public void setAlunos(List<Alunos> alunos) {
@@ -80,8 +79,8 @@ public class Turmas {
     }
 
     public void alterarAvaliacao(Alunos aluno, double nota1bim, double nota2bim, double provafinal) {
-        Avaliacao avaliacao = getAvaliacao();
-        if (nota1bim != nullptr) {
+        Avaliacao avaliacao = aluno.getAvaliacao();
+        if (avaliacao != null) {
             avaliacao.setNota1bim(nota1bim);
             avaliacao.setNota2bim(nota2bim);
             avaliacao.setProvafinal(provafinal);
