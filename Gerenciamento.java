@@ -1,28 +1,34 @@
 public class Main {
     public static void main(String[] args) {
-        Alunos aluno01 = new Aluno ("Gabrielly");
-        Alunos aluno02 = new Aluno ("Luna");
-        Alunos aluno03 = new Aluno ("Renan");
+        try{
+            Alunos aluno01 = new Aluno ("Gabrielly");
+            Alunos aluno02 = new Aluno ("Luna");
+            Alunos aluno03 = new Aluno ("Renan");
 
-        Professores professorL = new Professor ("Lucena");
-        Professores professorJ = new Professor ("Jorgiano");
-        Professores professorC = new Professor ("coleguinha")
+            Professores professorL = new Professor ("Lucena");
+            Professores professorJ = new Professor ("Jorgiano");
+            Professores professoraS = new Professor ("Silvia");
 
-        Disciplina poo = new Disciplina ("programação orientada a objetos");
-        Disciplina algoritmos = new Disciplina ("algoritmos");
-        Disciplina edl = new Disciplina ("estrutura de dados lineares");
+            Disciplina poo = new Disciplina ("programação orientada a objetos");
+            Disciplina algoritmos = new Disciplina ("algoritmos");
+            Disciplina ihc = new Disciplina ("interface humano computador");
 
-        Turmas turma2 = new turma ("2 periodo", poo, professorL);
-        Turmas turma4 = new turma ("4 periodo", edl, professorC);
+            Turmas turma2 = new turma ("2 periodo", poo, professorL);
+            Turmas turma4 = new turma ("4 periodo", ihc, professoraS);
 
-        turma2.addAluno(aluno01);
-        turma4.addAluno(aluno03);
+            turma2.addAluno(aluno01);
+            turma4.addAluno(aluno03);
+            turma2.removerAluno(aluno02);
+            professorL.removerTurma(turma2);
 
-        professorL.atribuirTurma(turma2);
-        professorC.atribuirTurma(turma4);
+        }
+        catch (TaInvalidoException e) {
+            System.out.println("atenção, deu erro na:" + e.getMessage());
+        }
+        catch (DadosInvalidosException) {
+            System.out.println("opa, seus dados estão inválidos" + e.getMessage()); 
 
-        turma2.removerAluno(aluno01);
-        professorL.removerTurma(turma2);
+        }
 
         System.out.println("Turma: " + turma2.getNome());
         System.out.println("Turma: " + turma4.getNome());
