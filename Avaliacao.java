@@ -31,7 +31,7 @@ public class Avaliacao{
     }
 
     public double media() {
-        double media = (nota1bim  *2 + nota2bim * 3) / 5;
+        double media = (nota1bim  * 2 + nota2bim * 3) / 5;
         if (media >= 60) {
             return media;
         }
@@ -45,7 +45,8 @@ public class Avaliacao{
         double media = media();
         if(media >= 60) {
             return ("Parabéns, você foi aprovado com a média: " + media);
-        } else {
+        } 
+        else {
             return ("Infelizmente você foi reprovado. Sua média foi:" + media);
         }
     }

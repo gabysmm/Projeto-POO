@@ -2,30 +2,51 @@ import java.util.*;
 
 public class Turmas extends Professor{
     private Disciplina disciplina;
-    private Professor professor;
-    private List<Alunos> aluno;
+    private Professores professores;
+    private List<Alunos> alunos;
     private String periodo; 
 
-    public Turmas(Disciplina disciplina, Professor professor, List<Alunos> aluno, String periodo) throws DadosInvalidosException {
-        if (disciplina == null || professor == null || aluno == null || aluno.isEmpty()) {
+    public Turmas(Disciplina disciplina, Professores professores, List<Alunos> alunos, String periodo) throws DadosInvalidosException {
+        if (disciplina == null || professores == null || alunos == null || alunos.isEmpty()) {
             throw new DadosInvalidosException("Todos os campos devem ser preenchidos. Verifique se não falta nenhum dado.");
         }
-        this.professor = professor;
+        this.professores = professores;
         this.disciplina = disciplina;
-        this.aluno = new ArrayList<>();
+        this.alunos = new ArrayList<>();
         this.periodo = periodo;
     }
 
-    public static Turmas atribuirTurma(Disciplina disciplina, Professores professor, List<Alunos> aluno, String periodo) throws DadosInvalidosException {
-        return new Turmas(disciplina, professor, aluno, periodo);
+    public static Turmas atribuirTurma(Disciplina disciplina, Professores professor, List<Alunos> alunos, String periodo) throws DadosInvalidosException {
+        return new Turmas(disciplina, professor, alunos, periodo);
+    }
+
+    public void addAluno(Aluno aluno) throws TaInvalidoException {
+        if (aluno == null) {
+            throw new TaInvalidoException("o aluno não pode ser nulo");
+        }
+        if (alunos.contains(aluno)) {
+            throw new TaInvalidoException("o aluno já está matriculado nesta turma");
+        }
+        alunos.add(aluno);
+        
+    }
+
+    public void removerAluno(Aluno aluno) throws TaInvalidoException {
+        if (aluno == null) {
+            throw new TaInvalidoException("O aluno não pode ser nulo.");
+        }
+        if (!alunos.contains(aluno)) {
+            throw new TaInvalidoException("O aluno não está matriculado nesta turma.");
+        }
+        alunos.remove(aluno);
     }
 
     public List<Alunos> getAlunos() {
-        return aluno;
+        return alunos;
     }
 
-    public void setAlunos(List<Alunos> aluno) {
-        this.aluno = aluno;
+    public void setAlunos(List<Alunos> alunos) {
+        this.alunos = alunos;
     }
 
     public Disciplina getDisciplina() {
@@ -36,12 +57,12 @@ public class Turmas extends Professor{
         this.disciplina = disciplina;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public Professores getProfessores() {
+        return professores;
     }
 
-    public void setProfessor (Professor professor) {
-        this.professor = professor;
+    public void setProfessores(Professores professores) {
+        this.professores = professores;
     }
 
     public String getPeriodo() {
@@ -67,26 +88,5 @@ public class Turmas extends Professor{
         if (this.provafinal != null) {
             avaliacao.setProvafinal(provafinal);
         }
-    }
-
-    public void addAluno(Alunos aluno) throws TaInvalidoException {
-        if (aluno == null) {
-            throw new TaInvalidoException("o aluno não pode ser nulo");
-        }
-        if (aluno.contains(aluno)) {
-            throw new TaInvalidoException("o aluno já está matriculado nesta turma");
-        }
-        aluno.add(aluno);
-        
-    }
-
-    public void removerAluno(Aluno aluno) throws TaInvalidoException {
-        if (aluno == null) {
-            throw new TaInvalidoException("O aluno não pode ser nulo.");
-        }
-        if (!aluno.contains(aluno)) {
-            throw new TaInvalidoException("O aluno não está matriculado nesta turma.");
-        }
-        aluno.remove(aluno);
     }
 }

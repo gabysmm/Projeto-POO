@@ -5,9 +5,9 @@ public class Main {
             Alunos aluno02 = new Aluno ("Luna", "20232014040018", "2 periodo");
             Alunos aluno03 = new Aluno ("Renan", "20222014040000", "4 periodo");
 
-            Professores professorL = new Professor ("Lucena", "1111");
-            Professores professorJ = new Professor ("Jorgiano", "2222");
-            Professores professoraS = new Professor ("Silvia", "3333");
+            Professor professorL = new Professor ("Lucena", "1111");
+            Professor professorJ = new Professor ("Jorgiano", "2222");
+            Professor professoraS = new Professor ("Silvia", "3333");
 
             Disciplina poo = new Disciplina ("programação orientada a objetos");
             Disciplina algoritmos = new Disciplina ("algoritmos");
