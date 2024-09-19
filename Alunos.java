@@ -4,7 +4,7 @@ public class Alunos {
     private String periodo;
     private Avaliacao avaliacao;
 
-    public Aluno(String nome, String matricula, String periodo) throws DadosInvalidosException {
+    public Alunos(String nome, String matricula, String periodo) throws DadosInvalidosException {
         if (nome == null || nome.isEmpty()) {
             throw new DadosInvalidosException("o nome do aluno é um campo obrigatório");
         }
