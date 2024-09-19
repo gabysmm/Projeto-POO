@@ -30,13 +30,23 @@ public class Avaliacao{
         this.provafinal = provafinal;
     }
 
-    public Media() {
-        double media = (nota1bim + nota2bim) / 2;
+    public double media() {
+        double media = (nota1bim  *2 + nota2bim * 3) / 5;
         if (media >= 60) {
             return media;
         }
-        else {
-
+        else() {
+            double media_final = (media + provafinal) / 2;
+            return media_final;
         }
     }
-}
+
+    public String statusAluno() {
+        double media = media();
+        if(media >= 60) {
+            return("parabéns, você foi aprovado com a média: " + media;)
+        }
+        else(media < 60) {
+            return("infelizmente você foi reprovado :( sua média foi:" + media);
+        }
+    } 

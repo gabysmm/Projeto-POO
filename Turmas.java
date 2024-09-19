@@ -1,7 +1,9 @@
 import java.util.*;
 
-public class Turmas {
+public class Turmas extends Professor{
+    private int periodo;
     private Disciplina disciplina;
+<<<<<<< HEAD
     private Professores professores;
     private List<Alunos> alunos;
     private String periodo; 
@@ -11,6 +13,17 @@ public class Turmas {
             throw new DadosInvalidosException("Disciplina, professor e ao menos um aluno são obrigatórios. Verifique se não falta adicionar nenhum dado.");
         }
         this.professores = professores;
+=======
+    private Professor professor;
+    private List<Aluno> alunos;
+
+    public Turmas(int periodo, Disciplina disciplina, Professor professor) throws DadosInvalidosException {
+        if (periodo == null || periodo.isEmpty() || disciplina == null || professor == null) {
+            throw new DadosInvalidosException("todos os campos devem ser preenchidos");
+        }
+        this.periodo = periodo;
+        this.professor = professor;
+>>>>>>> ed764b0e8488c045bdfcf1be6aed4d867ce377f4
         this.disciplina = disciplina;
         this.alunos = new ArrayList<>();
         this.periodo = periodo;
@@ -20,14 +33,28 @@ public class Turmas {
         return new Turmas(disciplina, professor, alunos, periodo);
     }
 
-    public void addAluno(Aluno aluno) {
+    public void addAluno(Aluno aluno) throws TaInvalidoException {
+        if (aluno == null) {
+            throw new TaInvalidoException("o aluno não pode ser nulo");
+        }
+        if (alunos.contains(aluno)) {
+            throw new TaInvalidoException("o aluno já está matriculado nesta turma");
+        }
         alunos.add(aluno);
+        
     }
 
-    public void removerAluno(Aluno aluno) {
+    public void removerAluno(Aluno aluno) throws TaInvalidoException {
+        if (aluno == null) {
+            throw new TaInvalidoException("O aluno não pode ser nulo.");
+        }
+        if (!alunos.contains(aluno)) {
+            throw new TaInvalidoException("O aluno não está matriculado nesta turma.");
+        }
         alunos.remove(aluno);
     }
 
+<<<<<<< HEAD
     public List<Alunos> getAlunos() {
         return alunos;
     }
@@ -76,4 +103,18 @@ public class Turmas {
             avaliacao.setProvafinal(provafinal);
         }
     }
+=======
+    public Professor getProfessor() {
+        return professor;
+    }
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+    public getPeriodo() {
+        return periodo;
+    }
+>>>>>>> ed764b0e8488c045bdfcf1be6aed4d867ce377f4
 }

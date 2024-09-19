@@ -1,7 +1,7 @@
 public class Aluno {
     private String nome;
     private String matricula;
-    private Avaliacao avaliacao;
+    private String periodo;
 
     public Aluno(String nome, String matricula) throws DadosInvalidosException {
         if (nome == null || nome.isEmpty()) {
@@ -9,14 +9,9 @@ public class Aluno {
         }
         this.nome = nome;
         this.matricula = matricula;
-<<<<<<< HEAD
-        this.avaliacao = null;
-=======
+        this.periodo = periodo;
         
     }
->>>>>>> ed764b0e8488c045bdfcf1be6aed4d867ce377f4
-    }
-
     public String getNome(){
         return this.nome;
     }
@@ -31,11 +26,17 @@ public class Aluno {
         this.matricula = matricula;
     }
 
-    public Avaliacao getAvaliacao() {
-        return avaliacao;
+    public String getPeriodo() {
+        return this.periodo;
     }
-    public void setAvaliacao(Avaliacao avaliacao) {
-        this.avaliacao = avaliacao;
+
+    public void setPeriodo() {
+        this.periodo = periodo;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " (" + matricula + ") - " + periodo;
     }
 
 }
