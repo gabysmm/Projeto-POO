@@ -1,14 +1,16 @@
 import java.util.*;
 
 public class Turmas extends Professor{
+    private int periodo;
     private Disciplina disciplina;
     private Professor professor;
     private List<Aluno> alunos;
 
-    public Turmas(String nomeTurma, Disciplina disciplina, Professor professor) throws DadosInvalidosException {
-        if (nome == null || nomeTurma.isEmpty() || disciplina == null || professor == null) {
+    public Turmas(int periodo, Disciplina disciplina, Professor professor) throws DadosInvalidosException {
+        if (periodo == null || periodo.isEmpty() || disciplina == null || professor == null) {
             throw new DadosInvalidosException("todos os campos devem ser preenchidos");
         }
+        this.periodo = periodo;
         this.professor = professor;
         this.disciplina = disciplina;
         this.alunos = new ArrayList<>();
@@ -43,5 +45,8 @@ public class Turmas extends Professor{
     }
     public Disciplina getDisciplina() {
         return disciplina;
+    }
+    public getPeriodo() {
+        return periodo;
     }
 }
