@@ -27,7 +27,7 @@ public class Main {
         catch (TaInvalidoException e) {
             System.out.println("atenção, deu erro na:" + e.getMessage());
         }
-        catch (DadosInvalidosException) {
+        catch (DadosInvalidosException e) {
             System.out.println("opa, seus dados estão inválidos" + e.getMessage()); 
 
         }
