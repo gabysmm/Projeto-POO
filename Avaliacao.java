@@ -40,7 +40,7 @@ public class Avaliacao{
             return media_final;
         }
     }
-
+    
     public String statusAluno() {
         double media = media();
         if(media >= 60) {

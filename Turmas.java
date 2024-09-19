@@ -36,12 +36,12 @@ public class Turmas extends Professor{
         this.disciplina = disciplina;
     }
 
-    public Professores getProfessores() {
-        return professores;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setProfessores(Professores professores) {
-        this.professores = professores;
+    public void setProfessor (Professor professor) {
+        this.professor = professor;
     }
 
     public String getPeriodo() {
