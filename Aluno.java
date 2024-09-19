@@ -9,6 +9,7 @@ public class Aluno {
         }
         this.nome = nome;
         this.matricula = matricula;
+        this.periodo = periodo;
         
     }
     public String getNome(){
@@ -31,6 +32,11 @@ public class Aluno {
 
     public void setPeriodo() {
         this.periodo = periodo;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " (" + matricula + ") - " + periodo;
     }
 
 }
