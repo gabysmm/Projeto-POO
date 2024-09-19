@@ -13,8 +13,8 @@ public class Main {
             Disciplina algoritmos = new Disciplina ("algoritmos", "ALG1");
             Disciplina ihc = new Disciplina ("interface humano computador", "IHC1");
 
-            Turmas turma2 = new turma ("2 periodo", poo, professorL);
-            Turmas turma4 = new turma ("4 periodo", ihc, professoraS);
+            Turmas turma2 = new Turma ("2 periodo", poo, professorL);
+            Turmas turma4 = new Turma ("4 periodo", ihc, professoraS);
 
             turma2.addAluno(aluno01);
             turma2.addAluno(aluno02);
