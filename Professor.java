@@ -39,4 +39,9 @@ public class Professor {
     public List<Turmas> getTurmas() {
         return this.turmas;
     }
+
+    @Override
+    public String toString() {
+        return ("professor" + nome_p + "identificação" + identificacao);
+    }
 }
