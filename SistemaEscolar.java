@@ -77,7 +77,7 @@ public class SistemaEscolar {
     private static void cadastrarDisciplina() {
         System.out.print("Nome da Disciplina: ");
         String nome = scanner.nextLine();
-        System.out.print("Código: ");
+        System.out.print("Código da Disciplina: ");
         String codigo = scanner.nextLine();
 
         Disciplina disciplina = new Disciplina(nome, codigo);
@@ -144,7 +144,7 @@ public class SistemaEscolar {
             return;
         }
     
-        System.out.print("Código da Disciplina, que vai ser associada a turma: ");
+        System.out.print("Código da Disciplina: ");
         String codigoDisciplina = scanner.nextLine();
         Turmas turma = turmas.stream()
             .filter(t -> t.getDisciplina().getCodigo().equals(codigoDisciplina))
@@ -207,7 +207,7 @@ public class SistemaEscolar {
                     System.out.println("Período: " + turma.getPeriodo());
                     System.out.println("Disciplina: " + turma.getDisciplina().getNome());
                     System.out.println("Professor: " + turma.getProfessor().getNome());
-                    System.out.println("Notas: ");
+                    System.out.println("=== Notas das Avaliações ===");
 
                     Avaliacao avaliacao = alunoTurma.getAvaliacao();
                     if (avaliacao != null) {
