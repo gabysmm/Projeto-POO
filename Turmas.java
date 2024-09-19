@@ -88,4 +88,31 @@ public class Turmas {
             System.out.println("Avaliação não encontrada para o aluno.");
         }
     }
+
+    public void emitirBoletim() {
+        System.out.println("=== Boletim da Turma: " + periodo + " ===");
+        System.out.println("Disciplina: " + disciplina.getNome() + " (" + disciplina.getCodigo() + ")");
+        System.out.println("Professor: " + professor.getNome() + "\n");
+    
+        if (alunos.isEmpty()) {
+            System.out.println("Nenhum aluno matriculado nesta turma.");
+            return;
+        }
+    
+        for (Alunos aluno : alunos) {
+            Avaliacao avaliacao = aluno.getAvaliacao();
+            if (avaliacao != null) {
+                System.out.println("Aluno: " + aluno.getNome() + " (" + aluno.getMatricula() + ")");
+                System.out.println("Nota 1º Bimestre: " + avaliacao.getNota1bim());
+                System.out.println("Nota 2º Bimestre: " + avaliacao.getNota2bim());
+                System.out.println("Nota da Prova Final: " + avaliacao.getProvafinal());
+                System.out.println("Média Final: " + avaliacao.media());
+                System.out.println("Status: " + avaliacao.statusAluno());
+                System.out.println();
+            } else {
+                System.out.println("Aluno: " + aluno.getNome() + " (" + aluno.getMatricula() + ") - Avaliação não disponível.");
+                System.out.println();
+            }
+        }
+    }
 }

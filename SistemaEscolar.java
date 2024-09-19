@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 public class SistemaEscolar {
     private static List<Alunos> alunos = new ArrayList<>();
     private static List<Disciplina> disciplinas = new ArrayList<>();
@@ -12,7 +11,7 @@ public class SistemaEscolar {
         while (true) {
             exibirMenuPrincipal();
             int opcao = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1:
@@ -28,16 +27,10 @@ public class SistemaEscolar {
                     cadastrarTurma();
                     break;
                 case 5:
-                    listarAlunos();
+                    atribuirNotas();
                     break;
                 case 6:
-                    listarDisciplinas();
-                    break;
-                case 7:
-                    listarProfessores();
-                    break;
-                case 8:
-                    listarTurmas();
+                    emitirBoletim();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -54,10 +47,8 @@ public class SistemaEscolar {
         System.out.println("2. Cadastrar Disciplina");
         System.out.println("3. Cadastrar Professor");
         System.out.println("4. Cadastrar Turma");
-        System.out.println("5. Listar Alunos");
-        System.out.println("6. Listar Disciplinas");
-        System.out.println("7. Listar Professores");
-        System.out.println("8. Listar Turmas");
+        System.out.println("5. Atribuir notas ao Aluno");
+        System.out.println("6. Emitir Boletim");
         System.out.println("0. Sair");
         System.out.print("Escolha uma opção: ");
     }
@@ -126,45 +117,68 @@ public class SistemaEscolar {
             return;
         }
 
-        try{
+        try {
             Turmas turma = new Turmas(disciplina, professor, new ArrayList<>(), nome);
             turmas.add(turma);
             professor.atribuirTurma(turma);
             System.out.println("Turma cadastrada com sucesso!");
-        }
-        catch (Excessoes.DadosInvalidosException e){
-                System.out.println("erro ao cadastrar turma:" + e.getMessage());
-            }
-    }
-
-    private static void listarAlunos() {
-        System.out.println("\n=== Lista de Alunos ===");
-        for (Alunos aluno : alunos) {
-            System.out.println(aluno);
+        } catch (Excessoes.DadosInvalidosException e) {
+            System.out.println("Erro ao cadastrar turma: " + e.getMessage());
         }
     }
 
-    private static void listarDisciplinas() {
-        System.out.println("\n=== Lista de Disciplinas ===");
-        for (Disciplina disciplina : disciplinas) {
-            System.out.println(disciplina.getNome() + " (" + disciplina.getCodigo() + ")");
+    // Nova função para atribuir notas
+    private static void atribuirNotas() {
+        System.out.println("\n=== Atribuir Notas ===");
+        System.out.print("Matrícula do aluno: ");
+        String matricula = scanner.nextLine();
+
+        Alunos aluno = alunos.stream()
+                .filter(a -> a.getMatricula().equals(matricula))
+                .findFirst()
+                .orElse(null);
+
+        if (aluno == null) {
+            System.out.println("Aluno não encontrado.");
+            return;
         }
+
+        System.out.print("Nota 1º Bimestre: ");
+        double nota1 = scanner.nextDouble();
+        System.out.print("Nota 2º Bimestre: ");
+        double nota2 = scanner.nextDouble();
+        System.out.print("Nota da Prova Final (se aplicável, caso contrário insira 0): ");
+        double provafinal = scanner.nextDouble();
+
+
+        Avaliacao avaliacao = new Avaliacao(nota1, nota2, provafinal);
+        aluno.setAvaliacao(avaliacao);
+
+        System.out.println("Notas atribuídas com sucesso ao aluno " + aluno.getNome());
     }
 
-    private static void listarProfessores() {
-        System.out.println("\n=== Lista de Professores ===");
-        for (Professor professor : professores) {
-            System.out.println(professor);
+    private static void emitirBoletim() {
+        System.out.println("\n=== Escolha a Turma para Emitir o Boletim ===");
+        for (int i = 0; i < turmas.size(); i++) {
+            Turmas turma = turmas.get(i);
+            System.out.println((i + 1) + ". Turma: " + turma.getPeriodo() + ", Disciplina: "
+                    + turma.getDisciplina().getNome() + " (" + turma.getDisciplina().getCodigo() + ")");
         }
-    }
+        System.out.print("Escolha uma turma pelo número: ");
+        int opcao = scanner.nextInt() - 1;
+        if (opcao >= 0 && opcao < turmas.size()) {
+            Turmas turmaSelecionada = turmas.get(opcao);
 
-    private static void listarTurmas() {
-        System.out.println("\n=== Lista de Turmas ===");
-        for (Turmas turma : turmas) {
-            System.out.println("Turma: " + turma.getPeriodo());
-            System.out.println("Disciplina: " + turma.getDisciplina().getNome());
-            System.out.println("Professor: " + turma.getProfessor().getNome());
-            System.out.println("Alunos: " + turma.getAlunos().size());
+            System.out.println("\n=== Boletim: " + turmaSelecionada.getPeriodo() + " ===");
+            System.out.println("Disciplina: " + turmaSelecionada.getDisciplina().getNome()
+                    + " (" + turmaSelecionada.getDisciplina().getCodigo() + ")");
+            System.out.println("Professor: " + turmaSelecionada.getProfessor().getNome()
+                    + " (" + turmaSelecionada.getProfessor().getIdentificacao() + ")");
+            System.out.println("Alunos na turma: " + turmaSelecionada.getAlunos().size() + "\n");
+
+            turmaSelecionada.emitirBoletim();
+        } else {
+            System.out.println("Opção inválida.");
         }
     }
 }
