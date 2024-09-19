@@ -8,7 +8,7 @@ public class Turmas {
     private String periodo; 
 
     public Turmas(Disciplina disciplina, Professor professor, List<Alunos> alunos, String periodo) throws Excessoes.DadosInvalidosException {
-        if (disciplina == null || professor == null || alunos == null || alunos.isEmpty()) {
+        if (disciplina == null || professor == null) {
             throw new Excessoes.DadosInvalidosException("Todos os campos devem ser preenchidos. Verifique se não falta nenhum dado.");
         }
         this.professor = professor;
