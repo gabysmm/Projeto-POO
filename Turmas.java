@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Turmas extends Professor, Aluno{
+public class Turmas extends Professor{
     private int periodo;
     private Disciplina disciplina;
     private Professor professor;
