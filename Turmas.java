@@ -1,22 +1,22 @@
 import java.util.*;
 
-public class Turmas extends Professor{
+public class Turmas {
     private Disciplina disciplina;
-    private Professores professores;
+    private Professor professor;
     private List<Alunos> alunos;
     private String periodo; 
 
-    public Turmas(Disciplina disciplina, Professores professores, List<Alunos> alunos, String periodo) throws DadosInvalidosException {
-        if (disciplina == null || professores == null || alunos == null || alunos.isEmpty()) {
+    public Turmas(Disciplina disciplina, Professor professor, List<Alunos> alunos, String periodo) throws DadosInvalidosException {
+        if (disciplina == null || professor == null || alunos == null || alunos.isEmpty()) {
             throw new DadosInvalidosException("Todos os campos devem ser preenchidos. Verifique se não falta nenhum dado.");
         }
-        this.professores = professores;
+        this.professor = professor;
         this.disciplina = disciplina;
         this.alunos = new ArrayList<>();
         this.periodo = periodo;
     }
 
-    public static Turmas atribuirTurma(Disciplina disciplina, Professores professor, List<Alunos> alunos, String periodo) throws DadosInvalidosException {
+    public static Turmas atribuirTurma(Disciplina disciplina, Professor professor, List<Alunos> alunos, String periodo) throws DadosInvalidosException {
         return new Turmas(disciplina, professor, alunos, periodo);
     }
 
@@ -57,12 +57,12 @@ public class Turmas extends Professor{
         this.disciplina = disciplina;
     }
 
-    public Professores getProfessores() {
-        return professores;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setProfessores(Professores professores) {
-        this.professores = professores;
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
     public String getPeriodo() {

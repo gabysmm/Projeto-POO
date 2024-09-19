@@ -29,6 +29,7 @@ public class Professor {
     public void atribuirTurma(Turmas turma) {
         if (turma != null && !this.turmas.contains(turma)) {
             this.turmas.add(turma); 
+            turma.setProfessor(this);
         }
     }
 
