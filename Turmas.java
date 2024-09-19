@@ -81,12 +81,10 @@ public class Turmas extends Professor{
         Avaliacao avaliacao = getAvaliacao();
         if (this.nota1bim != null) {
             avaliacao.setNota1bim(nota1bim);
-        } 
-        if (this.nota2bim != null) {
             avaliacao.setNota2bim(nota2bim);
-        } 
-        if (this.provafinal != null) {
             avaliacao.setProvafinal(provafinal);
+        } else {
+            System.out.println("Avaliação não encontrada para o aluno.");
         }
     }
 }
