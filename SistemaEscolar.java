@@ -47,8 +47,8 @@ public class SistemaEscolar {
         System.out.println("2. Cadastrar Disciplina");
         System.out.println("3. Cadastrar Professor");
         System.out.println("4. Cadastrar Turma");
-        System.out.println("5. Atribuir notas ao Aluno");
-        System.out.println("6. Emitir Boletim");
+        System.out.println("5. Atribuir Notas ao Aluno");
+        System.out.println("6. Emitir Boletim por Nome do Aluno");
         System.out.println("0. Sair");
         System.out.print("Escolha uma opção: ");
     }
@@ -61,6 +61,8 @@ public class SistemaEscolar {
         System.out.print("Período: ");
         String periodo = scanner.nextLine();
 
+        System.out.println("Lista de alunos: " + alunos);
+
         try {
             Alunos aluno = new Alunos(nome, matricula, periodo);
             alunos.add(aluno);
@@ -68,6 +70,7 @@ public class SistemaEscolar {
         } catch (Excessoes.DadosInvalidosException e) {
             System.out.println("Erro ao cadastrar aluno: " + e.getMessage());
         }
+        
     }
 
     private static void cadastrarDisciplina() {
@@ -97,8 +100,8 @@ public class SistemaEscolar {
     }
 
     private static void cadastrarTurma() {
-        System.out.print("Nome da Turma: ");
-        String nome = scanner.nextLine();
+        System.out.print("Período da Turma: ");
+        String periodo = scanner.nextLine();
         System.out.print("Código da Disciplina: ");
         String codigoDisciplina = scanner.nextLine();
         System.out.print("Identificação do Professor: ");
@@ -118,7 +121,7 @@ public class SistemaEscolar {
         }
 
         try {
-            Turmas turma = new Turmas(disciplina, professor, new ArrayList<>(), nome);
+            Turmas turma = new Turmas(disciplina, professor, new ArrayList<>(), periodo);
             turmas.add(turma);
             professor.atribuirTurma(turma);
             System.out.println("Turma cadastrada com sucesso!");
@@ -127,7 +130,6 @@ public class SistemaEscolar {
         }
     }
 
-    // Nova função para atribuir notas
     private static void atribuirNotas() {
         System.out.println("\n=== Atribuir Notas ===");
         System.out.print("Matrícula do aluno: ");
@@ -149,7 +151,7 @@ public class SistemaEscolar {
         double nota2 = scanner.nextDouble();
         System.out.print("Nota da Prova Final (se aplicável, caso contrário insira 0): ");
         double provafinal = scanner.nextDouble();
-
+        scanner.nextLine(); 
 
         Avaliacao avaliacao = new Avaliacao(nota1, nota2, provafinal);
         aluno.setAvaliacao(avaliacao);
@@ -158,27 +160,46 @@ public class SistemaEscolar {
     }
 
     private static void emitirBoletim() {
-        System.out.println("\n=== Escolha a Turma para Emitir o Boletim ===");
-        for (int i = 0; i < turmas.size(); i++) {
-            Turmas turma = turmas.get(i);
-            System.out.println((i + 1) + ". Turma: " + turma.getPeriodo() + ", Disciplina: "
-                    + turma.getDisciplina().getNome() + " (" + turma.getDisciplina().getCodigo() + ")");
+        System.out.print("Digite o nome do aluno para emitir o boletim: ");
+        String nomeAluno = scanner.nextLine();
+
+        Alunos aluno = alunos.stream()
+                .filter(a -> a.getNome().equalsIgnoreCase(nomeAluno))
+                .findFirst()
+                .orElse(null);
+
+        if (aluno == null) {
+            System.out.println("Aluno não encontrado.");
+            return;
         }
-        System.out.print("Escolha uma turma pelo número: ");
-        int opcao = scanner.nextInt() - 1;
-        if (opcao >= 0 && opcao < turmas.size()) {
-            Turmas turmaSelecionada = turmas.get(opcao);
 
-            System.out.println("\n=== Boletim: " + turmaSelecionada.getPeriodo() + " ===");
-            System.out.println("Disciplina: " + turmaSelecionada.getDisciplina().getNome()
-                    + " (" + turmaSelecionada.getDisciplina().getCodigo() + ")");
-            System.out.println("Professor: " + turmaSelecionada.getProfessor().getNome()
-                    + " (" + turmaSelecionada.getProfessor().getIdentificacao() + ")");
-            System.out.println("Alunos na turma: " + turmaSelecionada.getAlunos().size() + "\n");
-
-            turmaSelecionada.emitirBoletim();
-        } else {
-            System.out.println("Opção inválida.");
+        boolean encontrou = false;
+        for (Turmas turma : turmas) {
+            if (turma.getAlunos().contains(aluno)) {
+                System.out.println("\n=== Boletim do Aluno: " + aluno.getNome() + " ===");
+                System.out.println("Matrícula: " + aluno.getMatricula());
+                System.out.println("Período: " + turma.getPeriodo());
+                System.out.println("Disciplina: " + turma.getDisciplina().getNome());
+                System.out.println("Professor: " + turma.getProfessor().getNome());
+                System.out.println("Notas: ");
+                Avaliacao avaliacao = aluno.getAvaliacao();
+                if (avaliacao != null) {
+                    System.out.println("Nota 1º Bimestre: " + avaliacao.getNota1bim());
+                    System.out.println("Nota 2º Bimestre: " + avaliacao.getNota2bim());
+                    System.out.println("Nota Prova Final: " + avaliacao.getProvafinal());
+                    System.out.println("Média Final: " + avaliacao.media());
+                    System.out.println("Status: " + avaliacao.statusAluno());
+                } else {
+                    System.out.println("Nenhuma avaliação encontrada.");
+                }
+                encontrou = true;
+                break;
+            }
+        }
+        if (!encontrou) {
+            System.out.println("Aluno não está matriculado em nenhuma turma.");
         }
     }
 }
+
+
