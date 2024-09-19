@@ -50,8 +50,9 @@ public class SistemaEscolar {
         System.out.println("2. Cadastrar Disciplina");
         System.out.println("3. Cadastrar Professor");
         System.out.println("4. Cadastrar Turma");
-        System.out.println("5. Atribuir Notas ao Aluno");
-        System.out.println("6. Emitir Boletim por Nome do Aluno");
+        System.out.println("5. Atribuir Aluno a Turma");
+        System.out.println("6. Atribuir Notas ao Aluno");
+        System.out.println("7. Emitir Boletim por Nome do Aluno");
         System.out.println("0. Sair");
         System.out.print("Escolha uma opção: ");
     }
@@ -143,7 +144,7 @@ public class SistemaEscolar {
             return;
         }
     
-        System.out.print("Código da Turma: ");
+        System.out.print("Código da Disciplina, que vai ser associada a turma: ");
         String codigoDisciplina = scanner.nextLine();
         Turmas turma = turmas.stream()
             .filter(t -> t.getDisciplina().getCodigo().equals(codigoDisciplina))
