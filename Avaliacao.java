@@ -45,7 +45,8 @@ public class Avaliacao{
         double media = media();
         if(media >= 60) {
             return ("Parabéns, você foi aprovado com a média: " + media);
-        } else {
+        } 
+        else {
             return ("Infelizmente você foi reprovado. Sua média foi:" + media);
         }
     }
