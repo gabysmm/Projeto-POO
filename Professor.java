@@ -23,4 +23,14 @@ public class Professor {
     public void identificacao(String identificacao){
         this.identificacao = identificacao;
     }
+
+    public void atribuirTurma(Turmas turma) {
+        if (turma != null) {
+            this.turmas.add(turma); 
+        }
+    }
+
+    public void removerTurma(Turmas turma) {
+        this.turmas.remove(turma);
+    }
 }
