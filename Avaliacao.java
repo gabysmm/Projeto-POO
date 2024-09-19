@@ -6,7 +6,7 @@ public class Avaliacao{
     public Avaliacao(double nota1bim, double nota2bim, double provafinal) {
         this.nota1bim = nota1bim;
         this.nota2bim = nota2bim;
-        this.provafinal = null;
+        this.provafinal = provafinal;
     }
 
     public double getNota1bim() {
@@ -31,7 +31,7 @@ public class Avaliacao{
     }
 
     public double media() {
-        double media = (nota1bim  *2 + nota2bim * 3) / 5;
+        double media = (nota1bim  * 2 + nota2bim * 3) / 5;
         if (media >= 60) {
             return media;
         }
@@ -40,14 +40,13 @@ public class Avaliacao{
             return media_final;
         }
     }
-
+    
     public String statusAluno() {
         double media = media();
         if(media >= 60) {
-            return("parabéns, você foi aprovado com a média: " + media);
-        } else if(media < 60) {
-            return("infelizmente você foi reprovado :( sua média foi:" + media);
+            return ("Parabéns, você foi aprovado com a média: " + media);
+        } else {
+            return ("Infelizmente você foi reprovado. Sua média foi:" + media);
         }
     }
-}
-    
+}    
