@@ -1,13 +1,14 @@
 import java.util.*;
+import java.util.ArrayList; 
 
 public class Professor {
     private String nome;
     private String identificacao;
     private List <Turmas> turmas;
 
-    public Professor(String nome, String identificacao) throws DadosInvalidosException {
+    public Professor(String nome, String identificacao) throws Excessoes.DadosInvalidosException {
         if (nome == null || nome.isEmpty()) {
-            throw new DadosInvalidosException("O nome do professor é um campo obrigatório.");
+            throw new Excessoes.DadosInvalidosException("O nome do professor é um campo obrigatório.");
         }
         this.nome = nome;
         this.identificacao = identificacao;
