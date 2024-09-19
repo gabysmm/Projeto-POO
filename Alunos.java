@@ -1,3 +1,6 @@
+import java.util.*; 
+import Excessoes;
+
 public class Alunos {
     private String nome;
     private String matricula;
@@ -6,7 +9,7 @@ public class Alunos {
 
     public Alunos(String nome, String matricula, String periodo) throws DadosInvalidosException {
         if (nome == null || nome.isEmpty()) {
-            throw new DadosInvalidosException("o nome do aluno é um campo obrigatório");
+            throw new Excessoes.DadosInvalidosException("o nome do aluno é um campo obrigatório");
         }
         this.nome = nome;
         this.matricula = matricula;
