@@ -1,14 +1,16 @@
 public class Alunos {
     private String nome;
     private String matricula;
+    private String periodo;
     private Avaliacao avaliacao;
 
-    public Aluno(String nome, String matricula) throws DadosInvalidosException {
+    public Aluno(String nome, String matricula, String periodo) throws DadosInvalidosException {
         if (nome == null || nome.isEmpty()) {
             throw new DadosInvalidosException("o nome do aluno é um campo obrigatório");
         }
         this.nome = nome;
         this.matricula = matricula;
+        this.periodo = periodo;
         this.avaliacao = null;
     }
 
