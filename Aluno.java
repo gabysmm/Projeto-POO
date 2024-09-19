@@ -1,6 +1,7 @@
 public class Aluno {
     private String nome;
     private String matricula;
+    private String periodo;
 
     public Aluno(String nome, String matricula) throws DadosInvalidosException {
         if (nome == null || nome.isEmpty()) {
@@ -22,6 +23,14 @@ public class Aluno {
     }
     public void setMatricula(String matricula){
         this.matricula = matricula;
+    }
+
+    public String getPeriodo() {
+        return this.periodo;
+    }
+
+    public void setPeriodo() {
+        this.periodo = periodo;
     }
 
 }
