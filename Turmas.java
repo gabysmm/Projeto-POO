@@ -20,7 +20,7 @@ public class Turmas {
         return new Turmas(disciplina, professor, alunos, periodo);
     }
 
-    public void addAluno(Aluno aluno) throws TaInvalidoException {
+    public void addAluno(Alunos aluno) throws TaInvalidoException {
         if (aluno == null) {
             throw new TaInvalidoException("o aluno não pode ser nulo");
         }
@@ -31,7 +31,7 @@ public class Turmas {
         
     }
 
-    public void removerAluno(Aluno aluno) throws TaInvalidoException {
+    public void removerAluno(Alunos aluno) throws TaInvalidoException {
         if (aluno == null) {
             throw new TaInvalidoException("O aluno não pode ser nulo.");
         }
@@ -79,7 +79,7 @@ public class Turmas {
 
     public void alterarAvaliacao(Alunos aluno, double nota1bim, double nota2bim, double provafinal) {
         Avaliacao avaliacao = getAvaliacao();
-        if (this.nota1bim != null) {
+        if (nota1bim != nullptr) {
             avaliacao.setNota1bim(nota1bim);
             avaliacao.setNota2bim(nota2bim);
             avaliacao.setProvafinal(provafinal);
