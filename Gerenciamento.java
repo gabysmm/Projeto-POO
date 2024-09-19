@@ -1,9 +1,9 @@
 public class Main {
     public static void main(String[] args) {
         try{
-            Alunos aluno01 = new Aluno ("Gabrielly", "20232014040000");
-            Alunos aluno02 = new Aluno ("Luna", "20232014040018");
-            Alunos aluno03 = new Aluno ("Renan", "20222014040000");
+            Alunos aluno01 = new Aluno ("Gabrielly", "20232014040000", "2 periodo");
+            Alunos aluno02 = new Aluno ("Luna", "20232014040018", "2 periodo");
+            Alunos aluno03 = new Aluno ("Renan", "20222014040000", "4 periodo");
 
             Professores professorL = new Professor ("Lucena", "1111");
             Professores professorJ = new Professor ("Jorgiano", "2222");
@@ -17,7 +17,9 @@ public class Main {
             Turmas turma4 = new turma ("4 periodo", ihc, professoraS);
 
             turma2.addAluno(aluno01);
+            turma2.addAluno(aluno02);
             turma4.addAluno(aluno03);
+
             turma2.removerAluno(aluno02);
             professorL.removerTurma(turma2);
 
