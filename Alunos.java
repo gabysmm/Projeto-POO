@@ -1,10 +1,12 @@
 public class Aluno {
     private String nome;
     private String matricula;
+    private Avaliacao avaliacao;
 
     public Aluno(String nome, String matricula){
         this.nome = nome;
         this.matricula = matricula;
+        this.avaliacao = null;
     }
 
     public String getNome(){
@@ -19,6 +21,13 @@ public class Aluno {
     }
     public void setMatricula(String matricula){
         this.matricula = matricula;
+    }
+
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
+    }
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
 }
