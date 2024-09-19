@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Turmas extends Professor{
-    private int periodo;
     private Disciplina disciplina;
     private Professores professores;
     private List<Alunos> alunos;
@@ -42,7 +41,6 @@ public class Turmas extends Professor{
         alunos.remove(aluno);
     }
 
-<<<<<<< HEAD
     public List<Alunos> getAlunos() {
         return alunos;
     }
@@ -91,3 +89,4 @@ public class Turmas extends Professor{
             avaliacao.setProvafinal(provafinal);
         }
     }
+}
